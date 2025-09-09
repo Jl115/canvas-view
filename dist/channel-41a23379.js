@@ -1,0 +1,12 @@
+'use strict';
+
+var index = require('./index-deb671d6.js');
+
+/* IMPORT */
+/* MAIN */
+const channel = (color, channel) => {
+    return index.Utils.lang.round(index.Color.parse(color)[channel]);
+};
+
+exports.channel = channel;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2hhbm5lbC00MWEyMzM3OS5qcyIsInNvdXJjZXMiOlsiLi4vbm9kZV9tb2R1bGVzL2tocm9tYS9kaXN0L21ldGhvZHMvY2hhbm5lbC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKiBJTVBPUlQgKi9cbmltcG9ydCBfIGZyb20gJy4uL3V0aWxzL2luZGV4LmpzJztcbmltcG9ydCBDb2xvciBmcm9tICcuLi9jb2xvci9pbmRleC5qcyc7XG4vKiBNQUlOICovXG5jb25zdCBjaGFubmVsID0gKGNvbG9yLCBjaGFubmVsKSA9PiB7XG4gICAgcmV0dXJuIF8ubGFuZy5yb3VuZChDb2xvci5wYXJzZShjb2xvcilbY2hhbm5lbF0pO1xufTtcbi8qIEVYUE9SVCAqL1xuZXhwb3J0IGRlZmF1bHQgY2hhbm5lbDtcbiJdLCJuYW1lcyI6WyJfIiwiQ29sb3IiXSwibWFwcGluZ3MiOiI7Ozs7QUFBQTtBQUdBO0FBQ0ssTUFBQyxPQUFPLEdBQUcsQ0FBQyxLQUFLLEVBQUUsT0FBTyxLQUFLO0FBQ3BDLElBQUksT0FBT0EsV0FBQyxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUNDLFdBQUssQ0FBQyxLQUFLLENBQUMsS0FBSyxDQUFDLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQztBQUNyRDs7OzsifQ==

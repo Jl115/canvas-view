@@ -21,12 +21,9 @@
       // "ES5",
       // "ES6",
       // "ES7",
-      "ES2022",
+      "ES2022"
     ],
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "include": ["**/*.ts", "**/*.tsx"]
 }
