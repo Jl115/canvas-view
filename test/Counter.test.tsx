@@ -7,7 +7,7 @@ import {
   screen,
   act,
 } from "@testing-library/react";
-import { Counter, useCounter } from "@/components/Counter";
+import { Counter, useCounter } from "@/app/components/Counter";
 import { describe } from "node:test";
 
 describe("React", () => {
