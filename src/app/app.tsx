@@ -1,29 +1,33 @@
-import { App as ObsidianApp } from "obsidian";
+import { useContext } from "react";
+import { Notice } from "obsidian";
 import { Counter } from "./components/Counter";
+import { AppContext } from "./core/AppContext";
+import FileReader from "./components/FileReader";
 
-// Define the props our component will accept
-interface AppProps {
-  obsidianApp: ObsidianApp;
-}
+export function App() {
+  const pluginInstance = useContext(AppContext);
 
-export function App({ obsidianApp }: AppProps) {
-  // This function uses the Obsidian API passed down through props
   const handleCreateNote = async () => {
+    if (!pluginInstance) return;
+
     try {
-      await obsidianApp.vault.create("New Note from React.md", "Hello, world!");
-      console.log("Note created successfully!");
+      await pluginInstance.app.vault.create(
+        "New Note from Context.md",
+        "Hello, world from Context! ✨",
+      );
+      new Notice("Note created successfully via Context!");
     } catch (err) {
-      console.error("Error creating note:", err);
+      new Notice("Error creating note.");
     }
   };
 
-  // template
   return (
     <div>
       <h2>Hello from React! 👋</h2>
       <p>This UI is rendered by React, inside an Obsidian View.</p>
       <button onClick={handleCreateNote}>Create a New Note</button>
       <Counter />
+      <FileReader />
     </div>
   );
 }

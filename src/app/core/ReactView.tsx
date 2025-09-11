@@ -1,16 +1,19 @@
-// view.ts
 import { ItemView, WorkspaceLeaf } from "obsidian";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "../app";
+import MyPlugin from "@/main";
+import { AppContext } from "./AppContext";
 
 export const MY_VIEW_TYPE = "my-react-view";
 
-export class MyReactView extends ItemView {
+export class ReactView extends ItemView {
+  private pluginInstance: MyPlugin;
   private root: ReactDOM.Root | null = null;
 
   constructor(leaf: WorkspaceLeaf) {
     super(leaf);
+    this.pluginInstance = MyPlugin.instance;
   }
 
   getViewType() {
@@ -21,24 +24,22 @@ export class MyReactView extends ItemView {
     return "My React View";
   }
 
-  // onOpen is where you mount your React component
   async onOpen() {
     const container = this.containerEl.children[1];
-    container.empty(); // Clear any existing content
+    container.empty();
 
     this.root = ReactDOM.createRoot(container);
     this.root.render(
+      // TODO: Remove StrictMode if it causes issues with Obsidian APIs
       <React.StrictMode>
-        {/* Pass the 'app' object and other methods as props! */}
-        <App obsidianApp={this.app} />
+        <AppContext.Provider value={this.pluginInstance}>
+          <App />
+        </AppContext.Provider>
       </React.StrictMode>,
     );
   }
 
-  // onClose is where you unmount to prevent memory leaks
   async onClose() {
-    if (this.root) {
-      this.root.unmount();
-    }
+    if (this.root) this.root.unmount();
   }
 }

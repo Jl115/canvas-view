@@ -1,8 +1,8 @@
-import { MY_VIEW_TYPE, MyReactView } from "@/app/views/View";
+import { MY_VIEW_TYPE, ReactView } from "@/app/core/ReactView";
 import MyPlugin from "@/main";
 
 export function setupView(plugin: MyPlugin) {
-  plugin.registerView(MY_VIEW_TYPE, (leaf) => new MyReactView(leaf));
+  plugin.registerView(MY_VIEW_TYPE, (leaf) => new ReactView(leaf));
 }
 
 export async function activateView(plugin: MyPlugin) {
